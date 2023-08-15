@@ -1,12 +1,13 @@
 import clsx from 'clsx';
 import css from './Selector.module.scss';
 import { useState } from "react";
-// import './SelectTheme.module.scss';
-import sprite from '../../../assets/icons/icons.svg';
-// import { OutsideClicker } from './OutsideClicker';
+import './Selector.module.scss';
+// import sprite from '../../../assets/icons/icons.svg';
+import { OutsideClicker } from './OutsideClicker';
 
-export const SelectTheme = ({selectHandler, userTheme, setSelectedTheme}) => {
+export const Selector = () => {
     const [isActive, setActive] = useState(false);
+    const [theme, setTheme] = useState('dark');
     
     const handleClick = (event) => {
         const evtParent = event.currentTarget.parentElement;
@@ -18,12 +19,13 @@ export const SelectTheme = ({selectHandler, userTheme, setSelectedTheme}) => {
 
     const handleSelect = (event) => {
         const theme = event.target.innerText.toLowerCase();
-        setSelectedTheme(theme);
-        selectHandler(theme);
+        setTheme(theme);
+        // selectHandler(theme);
     }
 
     const themeCheckHandler = () => {
-        return userTheme.length === 0 ? 'dark' : userTheme;
+        // return userTheme.length === 0 ? 'dark' : userTheme;
+        console.log(theme)
     }
 
     return (
@@ -34,7 +36,8 @@ export const SelectTheme = ({selectHandler, userTheme, setSelectedTheme}) => {
                         <p className={css.header}>Theme</p>
                         <div className={clsx(css.icon, [isActive && css.rotate])}>
                             <svg className={css.svg}>
-                                <use href={sprite + '#icon-arrow-down'}></use>
+                                {/* <use href={sprite + '#icon-arrow-down'}></use> */}
+                                <p>^</p>
                             </svg>
                         </div>
                     </div>

@@ -4,16 +4,17 @@ import './App.css';
 import { Home } from './components/Home';
 import { Catalog } from './components/Catalog';
 import { Favorites } from './components/Favorites';
+import { Header } from './components/Header/Header';
+// import { Selector } from './components/selector/Selector';
 
 function App() {
   return (
-    <div className="App">
       <Routes>
-        <Route path='/' element={<Home/>}></Route>
+        <Route path='/' element={<Header/>}></Route>
         <Route path='/catalog' element={<Catalog/>}></Route>
         <Route path='/favorites' element={<Favorites/>}></Route>
+        <Route path='*' element={<Home/>}></Route>
       </Routes>
-    </div>
   );
 }
 

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import css from './Selector.module.scss';
 import { useState } from "react";
-import './Selector.module.scss';
+// import './Selector.module.scss';
 // import sprite from '../../../assets/icons/icons.svg';
 import { OutsideClicker } from './OutsideClicker';
 
@@ -29,16 +29,36 @@ export const Selector = () => {
     }
 
     return (
-        <OutsideClicker isActive={isActive} setActive={setActive}>
-            <div className={css.container}>   
-                <div className={css.select}>
+        // <OutsideClicker isActive={isActive} setActive={setActive}>
+            <div className={css.container}> 
+                <form className={css.form}>
+                    <div className={css.modelContainer}>
+                        <label className={css.formLabel} for='enterText'>Car brand</label>
+                        <input className={css.carModel} id='enterText' type='text' placeholder='enter the text'></input>
+                    </div>
+
+                    <div className={css.containerPerHour}>
+                        <label className={css.formLabel} for='pricePerHour'>Price / 1 hour</label>
+                        <input className={css.perHour} id='pricePerHour' type='text' placeholder='to $'></input>
+                    </div>
+
+                    <div className={css.containerFromTo}>
+                        <label className={css.formLabel} for='priceFrom'>Car mileage / km</label>
+                        <input className={css.priceFrom} id='priceFrom' type='text' placeholder='From'></input>
+                        <input className={css.priceTo} id="priceTo" type='text' placeholder='To'></input>
+                    </div>
+
+                    <button className={css.button} type='submit'>Search</button>
+                </form>  
+                {/* <div className={css.select}>
                     <div className={css.selectContainer} onClick={handleClick}>
                         <p className={css.header}>Theme</p>
                         <div className={clsx(css.icon, [isActive && css.rotate])}>
                             <svg className={css.svg}>
-                                {/* <use href={sprite + '#icon-arrow-down'}></use> */}
-                                <p>^</p>
+                                <use href={sprite + '#icon-arrow-down'}></use>
+                                
                             </svg>
+                            <p>^</p>
                         </div>
                     </div>
                     
@@ -66,8 +86,8 @@ export const Selector = () => {
                             <p>Violet</p>
                         </li>
                     </ul>
-                </div>
+                </div> */}
             </div>
-        </OutsideClicker>
+        // </OutsideClicker>
     )
 }

@@ -1,6 +1,8 @@
 @import-normalize;
 @import './assets/fonts/manropeFontStyle.css';
 
+@import './sass/utils/variables.scss';
+
 * {
   box-sizing: border-box;
 }
@@ -8,9 +10,10 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Manorope', 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Manrope', 'sans-serif';
+  // font-family: -apple-system, BlinkMacSystemFont, 'Manorope', 'Segoe UI', 'Roboto', 'Oxygen',
+  //   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  //   sans-serif;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

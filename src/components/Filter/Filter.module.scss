@@ -60,11 +60,13 @@
 
     border: 1px solid black;
     overflow-y: scroll;
+    background-color: #FFFFFF;
 
     border-radius: 14px;
 
     &.perOurActive{
         display: block;
+        z-index: 1;
     }
 }
 .listPerHourItem{
@@ -190,7 +192,7 @@
     // scrollbar-width: 8px;
 
     // color: var(--select-option);
-    background-color: grey;
+    background-color: #FFFFFF;
 
     border-radius: 8px;
 

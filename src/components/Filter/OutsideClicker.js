@@ -8,7 +8,7 @@ export function OutsideClicker(props) {
   function useOutsideAlerter(ref) {
     useEffect(() => {
       function handleClickOutside(event) {
-        console.log('ref', ref.current)
+        console.log('ref', ref.current.innerHTML)
         console.log('event', event);
         if (ref.current && !ref.current.contains(event.target)) {
           // console.log('ref', ref.current)

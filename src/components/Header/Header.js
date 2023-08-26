@@ -5,7 +5,7 @@ import { Navigation } from "../Navigation/Navigation.js";
 // import { Children } from "react";
 // import { Selector } from "../Selector/Selector.js";
 
-export const Header = () => {
+export const Header = ({filterObj, setFilterObj}) => {
     return (
         // <div className={css.headerContainer}>
         // <section>
@@ -21,7 +21,7 @@ export const Header = () => {
                         </div>
                     </div>
                 </div> */}
-                <Filter/>
+                <Filter filterObj={filterObj} setFilterObj={setFilterObj}/>
             </header>
             <Outlet/>
         </>

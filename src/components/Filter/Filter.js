@@ -8,7 +8,7 @@ import 'overlayscrollbars/overlayscrollbars.css';
 // import 'overlayscrollbars/over';
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 
-export const Filter = () => {
+export const Filter = ({filterObj, setFilterObj}) => {
     const [modelIsActive, setModelIsActive] = useState(false);
     const [perOurIsActive, setPerOurIsActive] = useState(false);
     const [theme, setTheme] = useState('dark');
@@ -17,21 +17,7 @@ export const Filter = () => {
 
     const carBrands = ['Toyota', 'Lexus', 'Honda', 'Acura', 'Chevrolet', 'Ford', 'Kia', 'Chrysler', 'Hundai', 'Hummer', 'Subaru', 'Suzuki', 'Nissan'];
     const pricePerHour = ['30', '40', '50', '60', '70', '80', '90', '100', '110', '120', '130', '140', '150', '160', '170', '180', '190', '200']
-    // const cardArr = [
-    //     {manufacturer: "Hummer", year: "2006", price: '$55', city: 'Lviv', companyName: 'Adventure Car Rentals', carType: 'SUV', model: 'Hummer', mileage: '1234', additionalFeatures: 'Premium sound system'},
-    //     {manufacturer: "Hummer", year: "2006", price: '$55', city: 'Lviv', companyName: 'Adventure Car Rentals', carType: 'SUV', model: 'Hummer', mileage: '1234', additionalFeatures: 'Premium sound system'},
-    //     {manufacturer: "Hummer", year: "2006", price: '$55', city: 'Lviv', companyName: 'Adventure Car Rentals', carType: 'SUV', model: 'Hummer', mileage: '1234', additionalFeatures: 'Premium sound system'},
-    //     {manufacturer: "Hummer", year: "2006", price: '$55', city: 'Lviv', companyName: 'Adventure Car Rentals', carType: 'SUV', model: 'Hummer', mileage: '1234', additionalFeatures: 'Premium sound system'},
-    //     {manufacturer: "Hummer", year: "2006", price: '$55', city: 'Lviv', companyName: 'Adventure Car Rentals', carType: 'SUV', model: 'Hummer', mileage: '1234', additionalFeatures: 'Premium sound system'},
-    //     {manufacturer: "Hummer", year: "2006", price: '$55', city: 'Lviv', companyName: 'Adventure Car Rentals', carType: 'SUV', model: 'Hummer', mileage: '1234', additionalFeatures: 'Premium sound system'},
-    //     {manufacturer: "Hummer", year: "2006", price: '$55', city: 'Lviv', companyName: 'Adventure Car Rentals', carType: 'SUV', model: 'Hummer', mileage: '1234', additionalFeatures: 'Premium sound system'},
-    //     {manufacturer: "Hummer", year: "2006", price: '$55', city: 'Lviv', companyName: 'Adventure Car Rentals', carType: 'SUV', model: 'Hummer', mileage: '1234', additionalFeatures: 'Premium sound system'},
-    //     {manufacturer: "Hummer", year: "2006", price: '$55', city: 'Lviv', companyName: 'Adventure Car Rentals', carType: 'SUV', model: 'Hummer', mileage: '1234', additionalFeatures: 'Premium sound system'},
-    //     {manufacturer: "Hummer", year: "2006", price: '$55', city: 'Lviv', companyName: 'Adventure Car Rentals', carType: 'SUV', model: 'Hummer', mileage: '1234', additionalFeatures: 'Premium sound system'},
-    //     {manufacturer: "Hummer", year: "2006", price: '$55', city: 'Lviv', companyName: 'Adventure Car Rentals', carType: 'SUV', model: 'Hummer', mileage: '1234', additionalFeatures: 'Premium sound system'},
-    //     {manufacturer: "Hummer", year: "2006", price: '$55', city: 'Lviv', companyName: 'Adventure Car Rentals', carType: 'SUV', model: 'Hummer', mileage: '1234', additionalFeatures: 'Premium sound system'},
-    //     {manufacturer: "Hummer", year: "2006", price: '$55', city: 'Lviv', companyName: 'Adventure Car Rentals', carType: 'SUV', model: 'Hummer', mileage: '1234', additionalFeatures: 'Premium sound system'}
-    // ] 
+    
     const handleClick = (event) => {
         const evtParent = event.currentTarget.parentElement;
         // console.log(event);
@@ -59,10 +45,22 @@ export const Filter = () => {
     }
 
     const handleSubmit = (event) => {
+        const form = event.currentTarget.elements;
         event.preventDefault();
-        event.target.reset();
+        // event.target.reset();
+        // console.log(filterObj)
+        console.log(form.carModel.value);
     }
 
+    const handleList = (evt) => {
+        setFilterObj({
+            model: '',
+            pricePerHour: '',
+            proceFrom: '',
+            priceTo: ''
+        })
+        console.log('list', evt)
+    }
     // OverlayScrollbars(document.querySelector('#carModelId'), {
     //     overflow:{
     //         y: 'scroll'
@@ -95,6 +93,7 @@ export const Filter = () => {
                             <label className={css.formLabel} htmlFor='enterText'>Car brand</label>
                             <input 
                                 className={css.carModel} 
+                                name='carModel'
                                 id='enterText' 
                                 type='text' 
                                 placeholder='enter the text'
@@ -103,7 +102,11 @@ export const Filter = () => {
                                 // element="div"
                                 // options={{ scrollbars: { autoHide: 'scroll' } }}
                                 defer> */}
-                                <ul id='carModelId' className={clsx(css.list, [modelIsActive && css.modelActive])}>
+                                <ul 
+                                    id='carModelId' 
+                                    className={clsx(css.list, [modelIsActive && css.modelActive])}
+                                    onClick={handleList}
+                                >
                                     {/* <OverlayScrollbarsComponent
                                     // element="li"
                                     options={{ 
@@ -142,7 +145,7 @@ export const Filter = () => {
                     
                         <div ref={perOurRef} className={css.containerPerHour} onClick={handleClick}>
                             <label className={css.formLabel} htmlFor='pricePerHour'>Price / 1 hour</label>
-                            <input className={css.perHour} id='pricePerHour' type='text' placeholder='to $'>
+                            <input className={css.perHour} name='perHour' id='pricePerHour' type='text' placeholder='to $'>
                             </input>
                             <ul className={clsx(css.listPerHour, perOurIsActive && css.perOurActive)}>
                                 {pricePerHour.map((elem, i) => {
@@ -153,49 +156,13 @@ export const Filter = () => {
 
                     <div className={css.containerFromTo}>
                         <label className={css.formLabel} htmlFor='priceFrom'>Car mileage / km</label>
-                        <input className={css.priceFrom} id='priceFrom' type='text' placeholder='From'></input>
-                        <input className={css.priceTo} id="priceTo" type='text' placeholder='To'></input>
+                        <input className={css.priceFrom} name='priceFrom' id='priceFrom' type='text' placeholder='From'></input>
+                        <input className={css.priceTo} name='priceTo' id="priceTo" type='text' placeholder='To'></input>
                     </div>
 
-                    <button className={css.button} type='submit'>Search</button>
+                    <button className={css.submit} type='submit'>Search</button>
                 </form>  
-                {/* <div className={css.select}>
-                    <div className={css.selectContainer} onClick={handleClick}>
-                        <p className={css.header}>Theme</p>
-                        <div className={clsx(css.icon, [isActive && css.rotate])}>
-                            <svg className={css.svg}>
-                                <use href={sprite + '#icon-arrow-down'}></use>
-                                
-                            </svg>
-                            <p>^</p>
-                        </div>
-                    </div>
-                    
-                    <ul className={clsx(css.list, [isActive && css.active])} 
-                        onClick={event => {
-                            handleClick(event);
-                            handleSelect(event);
-                    }}>
-                        <li key={1} className={clsx({
-                            [css.listItem] : true,
-                            [css.current] : isActive && themeCheckHandler() === 'light'
-                        })}>
-                            <p>Light</p>
-                        </li>
-                        <li key={2} className={clsx({
-                            [css.listItem] : true,
-                            [css.current] : isActive && themeCheckHandler() === 'dark'
-                        })}>
-                            <p>Dark</p>
-                        </li>
-                        <li key={3} className={clsx({
-                            [css.listItem] : true,
-                            [css.current] : isActive && themeCheckHandler() === 'violet'
-                        })}>
-                            <p>Violet</p>
-                        </li>
-                    </ul>
-                </div> */}
+        
             </div>
         
     )

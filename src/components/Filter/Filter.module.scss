@@ -116,15 +116,23 @@
     border-bottom-right-radius: 18px;
 }
 
-.button{
+.submit{
     height: 46px;
     width: 136px;
     align-self: flex-end;
 
+    color: #FFFFFF;
     background-color: #3470FF;
 
     border: none;
     border-radius: 12px;
+
+    &:hover{
+        background-color: #759aef;
+    }
+    &:active{
+        background-color: #3360c9;
+    }
 }
 
 .select{

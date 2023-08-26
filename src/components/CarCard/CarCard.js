@@ -1,8 +1,21 @@
 import css from './CarCard.module.scss';
 import sprite from '../../assets/icons/icons.svg';
 
-export const CarCard = ({cardArr}) => {
-    console.log(cardArr)
+export const CarCard = ({cardArr, elem}) => {
+    // console.log('carCard', cardArr)
+    const {
+        manufacturer,
+        year,
+        price,
+        model,
+        mileage,
+        carType,
+        companyName,
+        city,
+        additionalFeatures,
+        country
+    } = elem;
+    // console.log(cardArr)
     return <div className={css.container}>
         <div className={css.imageContainer}>
             <div className={css.svgContainer}>
@@ -14,17 +27,17 @@ export const CarCard = ({cardArr}) => {
             
         </div>
         <div className={css.headers}>
-            <h2>car <span className={css.headersSpan}>model</span>, 2015</h2>
-            <h2>$40</h2>
+            <h2> {manufacturer} <span className={css.headersSpan}> {model} </span>, {year} </h2>
+            <h2> {price} </h2>
         </div>
         <ul className={css.list}>
-            <li className={css.listItem}>City</li>
-            <li className={css.listItem}>Country</li>
-            <li className={css.listItem}>Company</li>
-            <li className={css.listItem}>Car type</li>
-            <li className={css.listItem}>Car model</li>
-            <li className={css.listItem}>mileage</li>
-            <li className={css.listItem}>Additional features</li>
+            <li className={css.listItem}> {city} </li>
+            <li className={css.listItem}> {country} </li>
+            <li className={css.listItem}> {companyName} </li>
+            <li className={css.listItem}> {carType} </li>
+            <li className={css.listItem}> {model} </li>
+            <li className={css.listItem}> {mileage} </li>
+            <li className={css.listItem}> {additionalFeatures} </li>
         </ul>
         <button className={css.button} type='button'>Learn More</button>
     </div>

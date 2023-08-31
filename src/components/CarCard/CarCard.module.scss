@@ -1,9 +1,13 @@
 .container{
     width: 274px;
     // margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+
 
     border: 1px solid black;
     border-radius: 12px;    
+    justify-content: space-between;
 }
 
 .imageContainer{
@@ -85,10 +89,18 @@
     width: 100%;
     height: Fixed (44px);
     padding: 12px 99px 12px 99px;
+    // align-self: flex-end;
     
     background-color: #3470FF;
     color: #FFFFFF;
     border: none;
 
     border-radius: 12px;
+    
+    &:hover{
+        background-color: #759aef;
+    }
+    &:active{
+        background-color: #3360c9;
+    }
 }

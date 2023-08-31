@@ -3,15 +3,14 @@ import css from './Filter.module.scss';
 import { useState, useRef, useEffect } from "react";
 // import './Selector.module.scss';
 // import sprite from '../../../assets/icons/icons.svg';
-import { OutsideClicker } from './OutsideClicker';
 import 'overlayscrollbars/overlayscrollbars.css';
 // import 'overlayscrollbars/over';
-import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
+// import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 
 export const Filter = ({filterObj, setFilterObj}) => {
     const [modelIsActive, setModelIsActive] = useState(false);
     const [perOurIsActive, setPerOurIsActive] = useState(false);
-    const [theme, setTheme] = useState('dark');
+    // const [theme, setTheme] = useState('dark');
     let modelRef = useRef(null);
     let perOurRef = useRef(null);
 
@@ -22,7 +21,7 @@ export const Filter = ({filterObj, setFilterObj}) => {
         const evtParent = event.currentTarget.parentElement;
         // console.log(event);
 
-        if(event.target.id === 'enterText'){
+        if(event.target.id === 'carModel'){
             setModelIsActive(!modelIsActive);
         }
         
@@ -33,15 +32,9 @@ export const Filter = ({filterObj, setFilterObj}) => {
         // console.log('current target' , event.currentTarget.children[2]);
     }
 
-    const handleSelect = (event) => {
-        const theme = event.target.innerText.toLowerCase();
-        setTheme(theme);
-        // selectHandler(theme);
-    }
-
     const themeCheckHandler = () => {
         // return userTheme.length === 0 ? 'dark' : userTheme;
-        console.log(theme)
+        // console.log(theme)
     }
 
     const handleSubmit = (event) => {
@@ -50,17 +43,59 @@ export const Filter = ({filterObj, setFilterObj}) => {
         // event.target.reset();
         // console.log(filterObj)
         console.log(form.carModel.value);
+        console.log(form.perHour.value);
+        console.log(form.mileAgeFrom.value);
+        console.log(form.mileAgeTo.value);
+        setFilterObj({
+            model: form.carModel.value,
+            pricePerHour: form.perHour.value,
+            mileAgeFrom: form.mileAgeFrom.value,
+            mileAgeTo: form.mileAgeTo.value
+        })
     }
 
-    const handleList = (evt) => {
-        setFilterObj({
-            model: '',
-            pricePerHour: '',
-            proceFrom: '',
-            priceTo: ''
-        })
-        console.log('list', evt)
+    const handleSelect = (event) => {
+        const currTargetId = event.currentTarget.children[1].id;
+        const eventId = event.target.id;
+        let currentSelect;
+        // console.log(event.target.localName);
+
+        if(eventId === 'carModel'){
+            console.log('event', eventId)
+            setModelIsActive(!modelIsActive);
+        }
+        
+        if(eventId === 'pricePerHour'){
+            setPerOurIsActive(!perOurIsActive);
+        }
+
+        if(event.target.localName === 'li') {
+
+            (currTargetId === "carModel") ? currentSelect = modelRef.current.children[1] 
+                                    : currentSelect = perOurRef.current.children[1]
+            // console.log(event.target.innerText);
+            // console.log(currentSelect);
+            // console.log(currTargetId);
+            currentSelect.value = event.target.innerText;
+            // console.log(modelRef.current.children[1].value);
+            // console.log(perOurRef.current.children);
+        }
+        // console.log(evt)
     }
+    const handleList = (evt) => {
+        // if(evt.target.localName !== 'ul') {
+        //     setFilterObj({
+        //         model: evt.target.innerText,
+        //         pricePerHour: '',
+        //         proceFrom: '',
+        //         priceTo: ''
+        //     });
+        //     console.log(evt.target.innerText);
+        // }
+        // console.log(evt)
+    }
+    // console.log('Filter', filterObj)
+
     // OverlayScrollbars(document.querySelector('#carModelId'), {
     //     overflow:{
     //         y: 'scroll'
@@ -89,14 +124,15 @@ export const Filter = ({filterObj, setFilterObj}) => {
             <div className={css.container}> 
                 <form className={css.form} onSubmit={handleSubmit}>
                 
-                        <div ref={modelRef} className={css.modelContainer} onClick={handleClick}>
-                            <label className={css.formLabel} htmlFor='enterText'>Car brand</label>
+                        <div ref={modelRef} className={css.modelContainer} onClick={handleSelect}>
+                            <label className={css.formLabel} htmlFor='carModel'>Car brand</label>
                             <input 
                                 className={css.carModel} 
                                 name='carModel'
-                                id='enterText' 
+                                id='carModel' 
                                 type='text' 
                                 placeholder='enter the text'
+                                autoComplete="off"
                             ></input>
                             {/* <OverlayScrollbarsComponent
                                 // element="div"
@@ -143,9 +179,16 @@ export const Filter = ({filterObj, setFilterObj}) => {
                             </ul> */}
                         </div>
                     
-                        <div ref={perOurRef} className={css.containerPerHour} onClick={handleClick}>
+                        <div ref={perOurRef} className={css.containerPerHour} onClick={handleSelect}>
                             <label className={css.formLabel} htmlFor='pricePerHour'>Price / 1 hour</label>
-                            <input className={css.perHour} name='perHour' id='pricePerHour' type='text' placeholder='to $'>
+                            <input 
+                                className={css.perHour} 
+                                name='perHour' 
+                                id='pricePerHour' 
+                                type='text' 
+                                placeholder='to $'
+                                autoComplete="off"
+                            >
                             </input>
                             <ul className={clsx(css.listPerHour, perOurIsActive && css.perOurActive)}>
                                 {pricePerHour.map((elem, i) => {
@@ -155,9 +198,9 @@ export const Filter = ({filterObj, setFilterObj}) => {
                         </div>
 
                     <div className={css.containerFromTo}>
-                        <label className={css.formLabel} htmlFor='priceFrom'>Car mileage / km</label>
-                        <input className={css.priceFrom} name='priceFrom' id='priceFrom' type='text' placeholder='From'></input>
-                        <input className={css.priceTo} name='priceTo' id="priceTo" type='text' placeholder='To'></input>
+                        <label className={css.formLabel} htmlFor='mileAgeFrom'>Car mileage / km</label>
+                        <input className={css.mileAgeFrom} name='mileAgeFrom' id='priceFrom' type='text' placeholder='From'></input>
+                        <input className={css.mileAgeTo} name='mileAgeTo' id="priceTo" type='text' placeholder='To'></input>
                     </div>
 
                     <button className={css.submit} type='submit'>Search</button>

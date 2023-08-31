@@ -7,7 +7,7 @@ import { Favorites } from './components/Favorites';
 import { Header } from './components/Header/Header';
 import { Navigation } from './components/Navigation/Navigation';
 import { Filter } from './components/Filter/Filter';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // import { Selector } from './components/selector/Selector';
 
 const cardArr = [
@@ -30,8 +30,8 @@ function App() {
   const [filterObj, setFilterObj] = useState({
     model: '',
     pricePerHour: '',
-    proceFrom: '',
-    priceTo: ''
+    mileAgeFrom: '',
+    mileAgeTo: ''
   })
   // const filterObj2 = {
   //   model: '',
@@ -39,7 +39,9 @@ function App() {
   //   proceFrom: '',
   //   priceTo: ''
   // }
-
+  useEffect(() => {
+    console.log('App', filterObj)
+  }, [filterObj])
   return (
       <Routes>
         <Route path='/' element={<Home/>}></Route>

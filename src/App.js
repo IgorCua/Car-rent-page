@@ -46,10 +46,10 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}></Route>
         <Route path='catalog' element={<Header filterObj={filterObj} setFilterObj={setFilterObj}/>}>
-          <Route index element={<Catalog cardArr={cardArr}/>}></Route>
+          <Route index element={<Catalog cardArr={cardArr} filterObj={filterObj}/>}></Route>
         </Route>
         <Route path='favorites' element={<Header filterObj={filterObj} setFilterObj={setFilterObj}/>}>
-          <Route index element={<Favorites/>}/>
+          <Route index element={<Favorites filterObj={filterObj}/>}/>
         </Route>
 
         <Route path='*' element={<Home/>}></Route>

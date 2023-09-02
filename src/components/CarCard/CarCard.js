@@ -23,8 +23,7 @@ export const CarCard = ({cardArr, elem}) => {
                     <use href={sprite + '#icon-heart-filled'}></use>
                 </svg>
             </div>
-            <div className={css.image}>Image</div>
-            
+            <div className={css.image}>Image</div>   
         </div>
         <div className={css.headers}>
             <h2> {manufacturer} <span className={css.headersSpan}> {model} </span>, {year} </h2>

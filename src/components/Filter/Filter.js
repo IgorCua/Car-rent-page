@@ -24,10 +24,10 @@ export const Filter = ({ filterObj, setFilterObj }) => {
         event.preventDefault();
         // event.target.reset();
         // console.log(filterObj)
-        console.log(form.carModel.value);
-        console.log(form.perHour.value);
-        console.log(form.mileAgeFrom.value);
-        console.log(form.mileAgeTo.value);
+        // console.log(form.carModel.value);
+        // console.log(form.perHour.value);
+        // console.log(form.mileAgeFrom.value);
+        // console.log(form.mileAgeTo.value);
         setFilterObj({
             model: form.carModel.value,
             pricePerHour: form.perHour.value,

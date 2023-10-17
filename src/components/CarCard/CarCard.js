@@ -1,7 +1,7 @@
 import css from './CarCard.module.scss';
 import sprite from '../../assets/icons/icons.svg';
 
-export const CarCard = ({cardArr, elem}) => {
+export const CarCard = ({cardArr, elem, isModalOpen, setIsModalOpen, handleModal}) => {
     // console.log('carCard', cardArr)
     const {
         manufacturer,
@@ -38,6 +38,6 @@ export const CarCard = ({cardArr, elem}) => {
             <li className={css.listItem}> {mileage} </li>
             <li className={css.listItem}> {additionalFeatures} </li>
         </ul>
-        <button className={css.button} type='button'>Learn More</button>
+        <button className={css.button} type='button' onClick={handleModal}>Learn More</button>
     </div>
 }

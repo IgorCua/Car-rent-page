@@ -12,46 +12,56 @@ export const Modal = ({closeModal}) => {
         <div className={css.backdrop} onClick={handleBackdropClick}>
             
             <div className={css.modal}>
-                <svg>
+                <svg className={css.svg}>
                     X
                 </svg>
                 <img className={css.image} alt=''></img>
-                <div>
-                    <h2 className={css.header}></h2>
-                    <ul className={css.headerList}>
-                        <li key={1}></li>
-                        <li key={2}></li>
-                        <li key={3}></li>
-                        <li key={4}></li>
-                        <li key={5}></li>
-                        <li key={6}></li>
-                        <li key={7}></li>
+                <div className={css.descriptionContainer}>
+                    <h2 className={css.header}>Make: <span>Model</span>, year</h2>
+                    <ul className={css.descriptionList}>
+                        <li key={1}>City: Chicago</li>
+                        <li key={2}>Country: USA</li>
+                        <li key={3}>Id: no id</li>
+                        <li key={4}>Year</li>
+                        <li key={5}>Type</li>
+                        <li key={6}>Fuel consunption</li>
+                        <li key={7}>engine size</li>
                     </ul> 
-                    <p className={css.headerDescription}></p> 
+                    <p className={css.carDescription}>
+                        The Buick Enclave is a stylish and spacious SUV known for its comfortable ride and luxurious features.
+                    </p> 
                 </div>
-                <div>
-                    <h3>Accessories and functionalities:</h3>
-                    <ul>
+                <div className={css.accessoriesContainer}>
+                    <h3 className={css.header}>Accessories and functionalities:</h3>
+                    <ul className={css.accessoriesList}>
                         {/* {accessoriesObj.map((elem)=>{
                             return (
                                 <li></li>
                             )
                         })} */}
-                        <li>1</li>
+                        <li>Tleather seats</li>
+                        <li>Panoramic roof</li>
+                        <li>Power liftage</li>
+                        <li>Premium audio system</li>
+                        <li>Remote start</li>
                     </ul>
                 </div>
-                <div>
-                    <h3>Rental Conditions:</h3>
-                    <ul>
+                <div className={css.rentalContainer}>
+                    <h3 className={css.header}>Rental Conditions:</h3>
+                    <ul className={css.rentalList}>
                         {/* {conditionsObj.map((elem)=>{
                             return (
                                 <li></li>
                             )
                         })} */}
-                        <li>1</li>
+                        <li>Minimum age: <span>25</span></li>
+                        <li>Valid driver license</li>
+                        <li>Security deposit required</li>
+                        <li>Mileage: <span>12,345</span></li>
+                        <li>Prise: <sapn>50$</sapn></li>
                     </ul>
                 </div>
-                <button type='button' onClick={closeModal}>Close window</button>
+                <button className={css.btn} type='button' onClick={closeModal}>Close window</button>
             </div>
         </div>,
         document.body

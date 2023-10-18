@@ -11,16 +11,11 @@ export const Header = ({filterObj, setFilterObj}) => {
         // <section>
         <>
             <header className={css.header}> 
-                {/* <div className={css.userContainer}>
-                    <Navigation/>
-
-                    <div className={css.userInfo}>
-                        User@mail.com
-                        <div>
-                            image
-                        </div>
-                    </div>
-                </div> */}
+                <nav>
+                    <NavLink to={'/'}>Home</NavLink>
+                    <NavLink to={'/catalog'}>About</NavLink>
+                    <NavLink to={'/favorites'}>Favorites</NavLink>
+                </nav>
                 <Filter filterObj={filterObj} setFilterObj={setFilterObj}/>
             </header>
             <Outlet/>

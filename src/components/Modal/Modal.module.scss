@@ -1,3 +1,16 @@
+h3{
+    font-size: 14px;
+    line-height: 20px; /* 142.857% */
+}
+
+ul{
+    display: flex;
+}
+
+span{
+    color: #3470FF;
+}
+
 .backdrop{
     position: fixed;
     top: 0;
@@ -16,9 +29,61 @@
 .modal{
     width: 541px;
     height: 742px;
+    padding: 40px;
 
     border-radius: 24px;
 
     background-color: #FFFFFF;
 }
 
+.svg{
+    width: 15px;
+    height: 15px;
+
+    border: 1px solid red;
+}
+
+.image{
+    width: 461px;
+    height: 248px;
+
+    border: 1px solid black;
+}
+
+.descriptionContainer{
+
+}
+.descriptionList{
+
+}
+.carDescription{
+
+}
+
+.accessoriesContainer{
+
+}
+.accessoriesList{
+
+}
+
+.rentalContainer{
+
+}
+.rentalList{
+    padding: 7px, 14px, 7px, 14px;
+
+    background-color: #F9F9F9;
+
+    border-radius: 25px;
+}
+
+.btn{
+    width: 168px;
+    height: 44px;
+
+    color: #FFFFFF;
+    background-color: #3470FF;
+
+    border-radius: 12px;
+}

@@ -1,14 +1,27 @@
+h2{
+    margin-bottom: 8px;
+
+    font-size: 18px;
+    line-height: 24px; /* 133.333% */
+    font-weight: bold;
+}
+
 h3{
+    margin-bottom: 8px;
+
     font-size: 14px;
     line-height: 20px; /* 142.857% */
+    font-weight: bold;
 }
 
 ul{
     display: flex;
+    margin: 0;
 }
 
 span{
     color: #3470FF;
+    font-weight: 600;
 }
 
 .backdrop{
@@ -30,6 +43,9 @@ span{
     width: 541px;
     height: 742px;
     padding: 40px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 
     border-radius: 24px;
 
@@ -37,45 +53,116 @@ span{
 }
 
 .svg{
-    width: 15px;
-    height: 15px;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    align-self: flex-end;
+    transform: translate(100%, -100%);
 
-    border: 1px solid red;
+    stroke: #121417;
+
+    &:hover{
+        stroke: #759aef;
+    }
+
+    &:active{
+        stroke: #3360c9;
+    }
 }
 
 .image{
+    margin-bottom: 14px;
     width: 461px;
     height: 248px;
 
     border: 1px solid black;
+    border-radius: 14px;
 }
 
 .descriptionContainer{
-
+    margin-bottom: 24px;
 }
 .descriptionList{
+    margin-left: -6px;
+    margin-bottom: 14px;
 
+    color: rgba(18, 20, 23, 0.50);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px; /* 150% */
+
+    display: flex;
+    flex-wrap: wrap;
+
+    & > li{
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    & :not(:last-child){
+        border-right: 1px solid rgba(18, 20, 23, 0.10);
+        // border-right: 1px solid black;
+        // border: 1px solid red;
+        // stroke-width: 1px;
+        // stroke: rgba(18, 20, 23, 0.10);
+    }
 }
 .carDescription{
-
+    color: #121417;
+    font-size: 14px;
+    line-height: 20px; /* 142.857% */
 }
 
 .accessoriesContainer{
-
+    margin-bottom: 24px;
 }
 .accessoriesList{
+    margin-left: -6px;
 
+    color: rgba(18, 20, 23, 0.50);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px; /* 150% */
+
+    display: flex;
+    flex-wrap: wrap;
+
+    & > li{
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    & :not(:last-child){
+        border-right: 1px solid rgba(18, 20, 23, 0.10);
+        // border-right: 1px solid black;
+        // border: 1px solid red;
+        // stroke-width: 1px;
+        // stroke: rgba(18, 20, 23, 0.10);
+    }
 }
 
 .rentalContainer{
-
+    margin-bottom: 24px;
 }
 .rentalList{
-    padding: 7px, 14px, 7px, 14px;
+    // padding: 7px, 14px, 7px, 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 
-    background-color: #F9F9F9;
+    color: #363535;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px; /* 150% */
 
-    border-radius: 25px;
+    & > li {
+        padding: 7px 14px 7px 14px;
+        background-color: #F9F9F9;
+
+        border-radius: 25px;
+    }
 }
 
 .btn{
@@ -86,4 +173,12 @@ span{
     background-color: #3470FF;
 
     border-radius: 12px;
+    border: none;
+
+    &:hover{
+        background-color: #759aef;
+    }
+    &:active{
+        background-color: #3360c9;
+    }
 }

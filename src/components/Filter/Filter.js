@@ -58,16 +58,19 @@ export const Filter = ({ filterObj, setFilterObj }) => {
         }
     };
 
-    useEffect(() => {
-        function handleClickOutside(event) {
-            if (modelRef.current && !modelRef.current.contains(event.target)) {
-                setModelIsActive(false);
-            }
-            if (perOurRef.current && !perOurRef.current.contains(event.target)) {
-                setPerOurIsActive(false);
-            }
+    function handleClickOutside(event) {
+        if (modelRef.current && !modelRef.current.contains(event.target)) {
+            setModelIsActive(false);
         }
+        if (perOurRef.current && !perOurRef.current.contains(event.target)) {
+            setPerOurIsActive(false);
+        }
+    }
+    
+
+    useEffect(() => {
         document.addEventListener("mousedown", handleClickOutside);
+        
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };

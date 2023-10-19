@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import css from './Modal.module.scss';
 import { createPortal } from 'react-dom';
+import sprite from '../../assets/icons/icons.svg';
 
 export const Modal = ({closeModal}) => {
 
@@ -12,12 +13,12 @@ export const Modal = ({closeModal}) => {
         <div className={css.backdrop} onClick={handleBackdropClick}>
             
             <div className={css.modal}>
-                <svg className={css.svg}>
-                    X
+                <svg className={css.svg} onClick={closeModal}>
+                    <use href={sprite + '#icon-x-close'}></use>
                 </svg>
                 <img className={css.image} alt=''></img>
                 <div className={css.descriptionContainer}>
-                    <h2 className={css.header}>Make: <span>Model</span>, year</h2>
+                    <h2 className={css.modalheader}>Make: <span>Model</span>, year</h2>
                     <ul className={css.descriptionList}>
                         <li key={1}>City: Chicago</li>
                         <li key={2}>Country: USA</li>
@@ -58,7 +59,7 @@ export const Modal = ({closeModal}) => {
                         <li>Valid driver license</li>
                         <li>Security deposit required</li>
                         <li>Mileage: <span>12,345</span></li>
-                        <li>Prise: <sapn>50$</sapn></li>
+                        <li>Prise: <span>50$</span></li>
                     </ul>
                 </div>
                 <button className={css.btn} type='button' onClick={closeModal}>Close window</button>

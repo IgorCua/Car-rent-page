@@ -6,7 +6,7 @@ import {
     // patchFavoriteApi
 } from "../servises/connectionsApi";
 
-const fetchCatalog = createAsyncThunk(
+export const fetchCatalog = createAsyncThunk(
     "catalog/fetchCatalog",
 
     async (_, thunkAPI) => {
@@ -19,7 +19,7 @@ const fetchCatalog = createAsyncThunk(
     }
 );
 
-const fetchCatalogFiltered = createAsyncThunk(
+export const fetchCatalogFiltered = createAsyncThunk(
     'catalog/fetchCatalogFiltered',
 
     async (_, thunkAPI) => {
@@ -32,7 +32,7 @@ const fetchCatalogFiltered = createAsyncThunk(
     }
 );
 
-const fetchCatalogFavorite = createAsyncThunk(
+export const fetchCatalogFavorite = createAsyncThunk(
     'catalog/fetchCatalogFavorite',
 
     async(_, thunkAPI) => {

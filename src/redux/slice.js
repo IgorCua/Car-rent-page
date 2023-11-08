@@ -28,7 +28,7 @@ export const catalogSlice = createReducer(initialState, (builder) => {
             state.favorites = action.payload;
             state.isLoading = false;
         })
-        .addMatcher(action => action.type.endsWith('/pending'), (state, action) => {
+        .addMatcher(action => action.type.endsWith('/pending'), (state, _) => {
             state.isLoading = true;
             state.error = null;
         })
